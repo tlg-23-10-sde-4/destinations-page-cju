@@ -21,6 +21,18 @@ user_input_form.addEventListener("submit", (e) => {
     cards_container.appendChild(card);
 })
 
+// when edit or delete buttons are clicked, handle them with delegations
+cards_container.addEventListener("click", (e) => {
+    const clickedElement = e.target
+
+    if (clickedElement.getAttribute("btn_type") === "delete") {
+        clickedElement.parentElement.parentElement.remove();
+    }
+    if (clickedElement.getAttribute("btn_type") === "edit") {
+        
+    }
+})
+
 function createCard({destinationName, locationName, photoURL, descr}) {
     /*
     <div class="card" style="width: 18rem;">
@@ -45,8 +57,8 @@ function createCard({destinationName, locationName, photoURL, descr}) {
         <p class="card-text">${locationName}</p>\
         ${descr && `<p class="card-text">${descr}</p>`}
         
-        <button class="btn btn-info">Edit</button>
-        <button class="btn btn-danger">Delete</button>
+        <button type="button" btn_type="edit" class="btn btn-info">Edit</button>
+        <button type="button" btn_type="delete" class="btn btn-danger">Delete</button>
         </div>
     </div>`;
 
