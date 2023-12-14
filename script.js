@@ -1,25 +1,27 @@
+
+
 // when form is submitted grab user's input and log it
 user_input_form.addEventListener("submit", (e) => {
     // e is the event object
     // that object holds more information about the event that we are handling
     e.preventDefault();
-
-    const PLACEHOLDER_PHOTO_URL = "./genericVacation.jpeg"
+    let PLACEHOLDER_PHOTO_URL = "./genericVacation.jpeg";
 
     const destinationName = destination_name.value;
     const locationName = location_name.value;
-    //this 
-    // const photoURL = photo_url.value ==="" ? : photo_url.value;
+
+    // const photoURL = photo_url.value === photo_url.value ? : "./genericVacation.jpeg" ;
     // or this 
-    const photoURL = photo_url.value || PLACEHOLDER_PHOTO_URL;
+    const photoURL = (photo_url.value || PLACEHOLDER_PHOTO_URL);
+
     const descr = description.value;
 
     // pass an object and destructure the
-    const card = createCard(destinationName, locationName, photoURL, descr);
+    const card = createCard({destinationName, locationName, photoURL, descr});
     cards_container.appendChild(card);
 })
 
-function createCard({dName, lName, imgUrl, desc}) {
+function createCard({destinationName, locationName, photoURL, descr}) {
     /*
     <div class="card" style="width: 18rem;">
         <img src="..." class="card-img-top" alt="...">
